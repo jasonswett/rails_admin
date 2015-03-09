@@ -66,6 +66,10 @@ module RailsAdmin
 
       delegate :primary_key, :table_name, to: :model, prefix: false
 
+			def quoted_name
+				"\"#{table_name}\""
+			end
+
       def encoding
         encoding = ::ActiveRecord::Base.connection.try(:encoding)
         encoding ||= ::ActiveRecord::Base.connection.try(:charset) # mysql2
